@@ -42,22 +42,22 @@ h1 {
 }
 
 /* Only works on safari at the moment */
-nav:has(a) {
-    background-color: var(--nav-bar-color, #0084ff);    
-    margin: 0 0 0 0;
-    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
-    display: flex;
-    flex-direction: row;
-}
-
-
-/* nav {
+/* nav:has(a) {
     background-color: var(--nav-bar-color, #0084ff);    
     margin: 0 0 0 0;
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     display: flex;
     flex-direction: row;
 } */
+
+
+nav {
+    background-color: var(--nav-bar-color, #0084ff);    
+    margin: 0 0 0 0;
+    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+    display: flex;
+    flex-direction: row;
+}
 
 nav a {
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
@@ -84,8 +84,12 @@ h2:hover, h3:hover {
     background-color: #B03535;
 }
 
-form label {
-    color: color-mix(in srgb, orange 75%, black 25%);
+form {
+    border: 2px solid #0084ff;
+    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+    & label {
+        color: color-mix(in srgb, orange 75%, black 25%);
+    }
 }
 
 /* Specification for mobile phones */
