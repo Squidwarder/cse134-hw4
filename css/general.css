@@ -74,14 +74,18 @@ h2, h3 {
     font-family: var(--heading-font, Verdana, Geneva, Tahoma, sans-serif);    
     color: color-mix(in srgb, orange 75%, black 25%);
     transition:
-        color 1s,
-        background-color 1s;        
-    transition-delay: 0.5s;  
+        color 0.5s,
+        background-color 0.5s;
+    transition-delay: 0.1s;  
 }
 
 h2:hover, h3:hover {
     color: white;
     background-color: #B03535;
+}
+
+form label {
+    color: color-mix(in srgb, orange 75%, black 25%);
 }
 
 /* Specification for mobile phones */
