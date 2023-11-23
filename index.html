@@ -45,6 +45,26 @@
             </p>
         </section>
 
+        <section>
+            <h2>Contact me</h2>
+            <p>
+                If you have any questions about me or would like to know me better, please fill out the form below
+            </p>
+
+            <form action="https://httpbin.org/post" method="post">
+                <fieldset>
+                    <label for="form_vis_name">Name</label>
+                    <input type="text" id="form_vis_name" name="vis_name"><br>
+                    <label for="form_vis_email">Email</label>
+                    <input type="text" id="form_vis_email" name="vis_email"><br>
+                    <label for="form_vis_comment">Comments</label>
+                    <textarea rows="5" cols="50" id="form_vis_comment" name="vis_comment"></textarea><br>
+                    <input type="hidden" name="possible_bot" value=true>
+                    <input type="submit" value="Send">
+                </fieldset>
+            </form>
+        </section>
+
         <nav>
             <a href="about_me.html">About me</a>
             <a href="blog.html">My blog posts</a>
