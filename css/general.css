@@ -85,7 +85,7 @@ h2:hover, h3:hover {
 }
 
 form {
-    border: 2px solid #0084ff;
+    border: 1px solid color-mix(in srgb, orange 75%, black 25%);
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     & label {
         color: color-mix(in srgb, orange 75%, black 25%);
