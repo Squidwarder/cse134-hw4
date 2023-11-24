@@ -85,11 +85,24 @@ h2:hover, h3:hover {
 }
 
 form {
-    border: 1px solid color-mix(in srgb, orange 75%, black 25%);
+    border: 1px solid color-mix(in srgb, orange 75%, black 25%);    
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     & label {
         color: color-mix(in srgb, orange 75%, black 25%);
     }
+}
+
+.msg-block {
+    display: flex;
+    flex-direction: row;    
+}
+
+output {
+    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+    margin: 0.5vh 0.5vw 0.5vh 0.5vw;
+    color: #B03535;
+    background-color: color-mix(in srgb, #0084ff 50%, white 50%);
+    border: 1px solid black;
 }
 
 /* Specification for mobile phones */
