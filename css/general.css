@@ -90,6 +90,10 @@ form {
     & label {
         color: color-mix(in srgb, orange 75%, black 25%);
     }
+
+    & input:user-invalid, textarea:user-invalid {
+        border: 2px solid red;
+    }
 }
 
 .msg-block {
