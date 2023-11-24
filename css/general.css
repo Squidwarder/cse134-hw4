@@ -85,15 +85,23 @@ h2:hover, h3:hover {
 }
 
 form {
-    border: 1px solid color-mix(in srgb, orange 75%, black 25%);    
+    border: 5px solid color-mix(in srgb, rgb(0, 255, 153) 75%, black 25%);    
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     & label {
         color: color-mix(in srgb, orange 75%, black 25%);
     }
 
-    & input:user-invalid, textarea:user-invalid {
-        border: 2px solid red;
+    & input:user-valid, textarea:user-valid {
+        border: 2px solid color-mix(in srgb, rgb(0, 255, 153) 75%, black 25%);
     }
+
+    & input:user-invalid, textarea:user-invalid {
+        border: 2px solid red;        
+    }
+}
+
+form:invalid {
+    border: 5px solid red;
 }
 
 .msg-block {
