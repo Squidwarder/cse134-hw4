@@ -2,7 +2,8 @@
     --page-color: #f4e8bd;
     --nav-bar-color: #0084ff;
     --heading-font: Lato;
-    --body-text-font: Arial;    
+    --body-text-font: Arial;
+    --output-msg-color: color-mix(in srgb, #0084ff 50%, white 50%);
 }
 
 body {    
@@ -113,11 +114,42 @@ form:invalid {
     flex-direction: row;    
 }
 
+.flash_warning {
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    0% {
+        background-color: #B03535;
+        color: black;
+        font: bold;
+    }
+    25% {
+        background-color: color-mix(in srgb, #B03535 75%, var(--output-msg-color) 25%);
+        color: black;
+        font: bold;
+    }
+    50% {
+        background-color: color-mix(in srgb, #B03535 50%, var(--output-msg-color) 50%);
+        color: black;
+        font: bold;
+    }
+    75% {
+        background-color: color-mix(in srgb, #B03535 25%, var(--output-msg-color) 75%);
+        color: black;
+        font: bold;
+    }
+    100% {
+        background-color: var(--output-msg-color);
+        color: black;        
+    }
+}
+
 output {
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     margin: 0.5vh 0.5vw 1.5vh 0.5vw;
     color: #B03535;
-    background-color: color-mix(in srgb, #0084ff 50%, white 50%);
+    background-color: var(--output-msg-color, (in srgb, #0084ff 50%, white 50%));
     border: 1px solid black;
 }
 
