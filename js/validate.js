@@ -154,6 +154,9 @@ commentValidate.addEventListener("input", (event) => {
     } else {
         commentErrMsg.textContent = "No errors detected";
         commentInfoMsg.textContent = (300 - commentValidate.value.length) + " Characters left";
+        if (300 - commentValidate.value.length < 50) {
+            flashWarning(commentInfoMsg);
+        }
         commentValidate.setCustomValidity("");
         // console.log("Valid comment");
     }
