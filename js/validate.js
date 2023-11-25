@@ -10,6 +10,14 @@ const commentValidate = document.getElementById("form_vis_comment");
 const commentErrMsg = document.getElementById("comment_error");
 const commentInfoMsg = document.getElementById("comment_info_msg");
 
+function flashWarning(warnedElement) {
+    warnedElement.classList.add("flash-warning");
+    console.log("flashWarning invoked");
+    setTimeout(() => {
+        warnedElement.classList.remove("flash-warning");
+    }, 2000);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     if (nameValidate.validity.typeMismatch || nameValidate.validity.valueMissing) {
         // console.log("Invalid name");
@@ -69,11 +77,12 @@ nameValidate.addEventListener("input", (event) => {
         if (nameValidate.validity.typeMismatch) {
             nameErrMsg.textContent = "Invalid Name";
             nameInfoMsg.textContent = "Only UTF-8 characters are accepted";
-            nameValidate.setCustomValidity("Please use valid characters");
+            nameValidate.setCustomValidity("Please use valid characters");            
         } else {
             nameErrMsg.textContent = "No input detected";
             nameInfoMsg.textContent = "Please input a name it's required";
             nameValidate.setCustomValidity("Please input a name");
+            flashWarning(nameErrMsg);
         }
     } else {        
         nameErrMsg.textContent = "No errors detected";
@@ -111,7 +120,7 @@ commentValidate.addEventListener("input", (event) => {
         if (commentValidate.validity.typeMismatch) {
             commentErrMsg.textContent = "Invalid Comment";
             commentInfoMsg.textContent = "Only UTF-8 characters are accepted";
-            commnetValidate.setCustomValidity("Please use valid characters");
+            commentValidate.setCustomValidity("Please use valid characters");
         } else if (commentValidate.validity.valueMissing) {
             commentErrMsg.textContent = "No input detected";
             commentInfoMsg.textContent = "Please input some comments, it's required";
