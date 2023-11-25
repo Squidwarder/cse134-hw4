@@ -121,17 +121,17 @@ form:invalid {
 @keyframes flash {
     0% {
         background-color: #B03535;
-        color: black;
+        color: white;
         font: bold;
     }
     75% {
         background-color: color-mix(in srgb, #B03535 80%, var(--output-msg-color) 20%);
-        color: black;
+        color: white;
         font: bold;
     }
     100% {
         background-color: color-mix(in srgb, #B03535 40%, var(--output-msg-color) 60%);
-        color: black;
+        color: white;
         font: bold;     
     }
 }
