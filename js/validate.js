@@ -113,7 +113,7 @@ commentValidate.addEventListener("input", (event) => {
         }
     } else {        
         commentErrMsg.textContent = "No errors detected";
-        commentInfoMsg.textContent = "Nice, this looks good";
+        commentInfoMsg.textContent = (200 - commentValidate.value.length) + " Characters left";
         // console.log("Valid comment");
     }
 })
