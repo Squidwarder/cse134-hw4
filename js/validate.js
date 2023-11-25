@@ -12,7 +12,7 @@ const commentInfoMsg = document.getElementById("comment_info_msg");
 
 document.addEventListener("DOMContentLoaded", function() {
     if (nameValidate.validity.typeMismatch || nameValidate.validity.valueMissing) {
-        console.log("Invalid name");        
+        // console.log("Invalid name");
         if (nameValidate.validity.typeMismatch) {
             nameErrMsg.textContent = "Invalid Name";
             nameInfoMsg.textContent = "Only UTF-8 characters are accepted";
@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {        
         nameErrMsg.textContent = "No errors detected";
         nameInfoMsg.textContent = "Nice, this looks good";
-        console.log("Valid name");
+        // console.log("Valid name");
     }
 
     if (emailValidate.validity.typeMismatch || emailValidate.validity.valueMissing) {
-        console.log("Invalid email");        
+        // console.log("Invalid email");
         if (emailValidate.validity.typeMismatch) {
             emailErrMsg.textContent = "Invalid email address";
             emailInfoMsg.textContent = "Did you forget to put @?";
@@ -38,15 +38,33 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {        
         emailErrMsg.textContent = "No errors detected";
         emailInfoMsg.textContent = "Nice, this looks good";
-        console.log("Valid email");
+        // console.log("Valid email");
+    }
+
+    if (commentValidate.validity.typeMismatch || commentValidate.validity.valueMissing || commentValidate.validity.tooLong) {
+        // console.log("Invalid comment");
+        if (commentValidate.validity.typeMismatch) {
+            // commentErrMsg.textContent = "Invalid Comment";
+            commentInfoMsg.textContent = "Only UTF-8 characters are accepted";
+        } else if (commentValidate.validity.valueMissing) {
+            commentErrMsg.textContent = "No input detected";
+            commentInfoMsg.textContent = "Please input some comments, it's required";
+        } else {
+            commentErrMsg.textContent = "Comment too long";
+            commentInfoMsg.textContent = "Please make it shorter, less than 200 characters";
+        }
+    } else {        
+        commentErrMsg.textContent = "No errors detected";
+        commentInfoMsg.textContent = "Nice, this looks good";
+        // console.log("Valid comment");
     }
 });
 
 // ! DO NOT set custom validity. If done so, form wouldn't be updated on the fly
 nameValidate.addEventListener("input", (event) => {
-    console.log("Name validate() invoked")
+    // console.log("Name validate() invoked");
     if (nameValidate.validity.typeMismatch || nameValidate.validity.valueMissing) {
-        console.log("Invalid name");        
+        // console.log("Invalid name");        
         if (nameValidate.validity.typeMismatch) {
             nameErrMsg.textContent = "Invalid Name";
             nameInfoMsg.textContent = "Only UTF-8 characters are accepted";
@@ -57,14 +75,14 @@ nameValidate.addEventListener("input", (event) => {
     } else {        
         nameErrMsg.textContent = "No errors detected";
         nameInfoMsg.textContent = "Nice, this looks good";
-        console.log("Valid name");
+        // console.log("Valid name");
     }
 });
 
 emailValidate.addEventListener("input", (event) => {
-    console.log("Email validate() invoked")
+    // console.log("Email validate() invoked");
     if (emailValidate.validity.typeMismatch || emailValidate.validity.valueMissing) {
-        console.log("Invalid email");        
+        // console.log("Invalid email");
         if (emailValidate.validity.typeMismatch) {
             emailErrMsg.textContent = "Invalid email address";
             emailInfoMsg.textContent = "Did you forget to put @?";
@@ -75,6 +93,27 @@ emailValidate.addEventListener("input", (event) => {
     } else {        
         emailErrMsg.textContent = "No errors detected";
         emailInfoMsg.textContent = "Nice, this looks good";
-        console.log("Valid email");
+        // console.log("Valid email");
     }
 });
+
+commentValidate.addEventListener("input", (event) => {
+    // console.log("Comment validate() invoked");
+    if (commentValidate.validity.typeMismatch || commentValidate.validity.valueMissing || commentValidate.validity.tooLong) {
+        // console.log("Invalid comment");
+        if (commentValidate.validity.typeMismatch) {
+            commentErrMsg.textContent = "Invalid Comment";
+            commentInfoMsg.textContent = "Only UTF-8 characters are accepted";
+        } else if (commentValidate.validity.valueMissing) {
+            commentErrMsg.textContent = "No input detected";
+            commentInfoMsg.textContent = "Please input some comments, it's required";
+        } else {
+            commentErrMsg.textContent = "Comment too long";
+            commentInfoMsg.textContent = "Please make it shorter, less than 200 characters";
+        }
+    } else {        
+        commentErrMsg.textContent = "No errors detected";
+        commentInfoMsg.textContent = "Nice, this looks good";
+        // console.log("Valid comment");
+    }
+})
