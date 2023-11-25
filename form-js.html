@@ -36,15 +36,15 @@
                 <label for="form_vis_name">Name (Required)</label><br>
                 <input type="text" id="form_vis_name" name="vis_name" required><br>
                 <div class="msg-block">
-                    <output name="name_error" for="form_vis_name">[error msg]</output>
-                    <output name="name_info_msg" for="form_vis_name">[info msg]</output><br>
+                    <output id="name_error" for="form_vis_name">[error msg]</output>
+                    <output id="name_info_msg" for="form_vis_name">[info msg]</output><br>
                 </div>
                                 
                 <label for="form_vis_email">Email (Required)</label><br>
                 <input type="email" id="form_vis_email" name="vis_email" required><br>
                 <div class="msg-block">
-                    <output name="emali_error" for="form_vis_email">[error msg]</output>
-                    <output name="emali_info_msg" for="form_vis_email">[info msg]</output><br>
+                    <output id="emali_error" for="form_vis_email">[error msg]</output>
+                    <output id="emali_info_msg" for="form_vis_email">[info msg]</output><br>
                 </div>
                         
                 <label for="form_vis_comment">Comments (Required)</label><br>
@@ -52,8 +52,8 @@
                     required maxlength="200" placeholder="Please don't go over 200 characters"></textarea><br>
                 
                 <div class="msg-block">
-                    <output name="comment_error" for="form_vis_comment">[error msg]</output>
-                    <output name="comment_info_msg" for="form_vis_comment">[info msg]</output><br>
+                    <output id="comment_error" for="form_vis_comment">[error msg]</output>
+                    <output id="comment_info_msg" for="form_vis_comment">[info msg]</output><br>
                 </div>
                 
                 <input type="hidden" name="possible_bot" value=true>
