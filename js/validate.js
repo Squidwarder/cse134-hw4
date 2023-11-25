@@ -2,11 +2,13 @@ const nameValidate = document.getElementById("form_vis_name");
 const emailValidate = document.getElementById("form_vis_email");
 const commentValidate = document.getElementById("form_vis_comment");
 
-
-email.addEventListener("input", (event) => {
-    if (email.validity.typeMismatch) {
-      email.setCustomValidity("I am expecting an email address!");
+emailValidate.addEventListener("input", (event) => {
+    console.log("Email validate() invoked")
+    if (emailValidate.validity.typeMismatch || emailValidate.validity.valueMissing) {
+        emailValidate.setCustomValidity("I am expecting an email address!");
+        console.log("Invalid email");
     } else {
-      email.setCustomValidity("This looks good");
+        emailValidate.setCustomValidity("This looks good");
+        console.log("Valid email");
     }
-  });
+});
