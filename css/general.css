@@ -114,8 +114,8 @@ form:invalid {
     flex-direction: row;    
 }
 
-.flash_warning {
-    animation: flash 1s infinite;
+.flash-warning {
+    animation: flash 2s infinite;
 }
 
 @keyframes flash {
@@ -124,24 +124,15 @@ form:invalid {
         color: black;
         font: bold;
     }
-    25% {
-        background-color: color-mix(in srgb, #B03535 75%, var(--output-msg-color) 25%);
-        color: black;
-        font: bold;
-    }
-    50% {
-        background-color: color-mix(in srgb, #B03535 50%, var(--output-msg-color) 50%);
-        color: black;
-        font: bold;
-    }
     75% {
-        background-color: color-mix(in srgb, #B03535 25%, var(--output-msg-color) 75%);
+        background-color: color-mix(in srgb, #B03535 80%, var(--output-msg-color) 20%);
         color: black;
         font: bold;
     }
     100% {
-        background-color: var(--output-msg-color);
-        color: black;        
+        background-color: color-mix(in srgb, #B03535 40%, var(--output-msg-color) 60%);
+        color: black;
+        font: bold;     
     }
 }
 
