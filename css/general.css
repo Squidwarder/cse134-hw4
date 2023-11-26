@@ -1,23 +1,42 @@
 :root {
-    --page-color: #f4e8bd;
-    --nav-bar-color: #0084ff;
+
+    --light-page-color: #f4e8bd;
+    --light-nav-color: #0084ff;
+    --light-output-msg-color: color-mix(in srgb, #0084ff 50%, white 50%);
+    --light-label-color: #fdf039;
+    --light-text-color: black;
+    
+    --dark-page-color: color-mix(in srgb, #f4e8bd 20%, black 80%);
+    --dark-nav-color: color-mix(in srgb, #0084ff 20%, black 80%);
+    --dark-output-msg-color: color-mix(in srgb, #0084ff 50%, white 50%);
+    --dark-label-color: #831010;
+    --dark-text-color: white;
+
+    --page-color: var(--light-page-color);
+    /* --page-color: var(--dark-page-color); */
+    --nav-bar-color: var(--light-nav-color);
     --heading-font: Lato;
     --body-text-font: Arial;
-    --output-msg-color: color-mix(in srgb, #0084ff 50%, white 50%);
+    --output-msg-color: var(--light-output-msg-color);
+    --switch-text: "Light mode";
+    --switch-bg-color: var(--light-label-color);
+    --text-color: var(--light-text-color);
 }
 
-body {    
+body {
+    color: var(--text-color);    
     background-color: var(--page-color, beige);
     font-family: var(--body-text-font, 'Times New Roman', Times, serif);
     margin: 0;
     
     & main {
-        margin: 0.5vh 1vw 0.5vh 1vw;
-        padding: 0 0.5vw 0 0.5vw;
+        color: var(--text-color);    
+        background-color: var(--page-color, beige);
+        font-family: var(--body-text-font, 'Times New Roman', Times, serif);
     }
 
     & section {
-        margin: 0.5vh 1vw 0.5vh 1vw;
+        margin: 0 1vw 0.5vh 1vw;
         padding: 0 0.5vw 0 0.5vw;
         display: flex;
         flex-direction: column;
@@ -58,6 +77,7 @@ nav {
     padding: 0.5vh 0.5vw 0.5vh 0.5vw;
     display: flex;
     flex-direction: row;
+    min-height: 5vh;
 }
 
 nav a {
@@ -69,6 +89,35 @@ nav a {
 
 nav a:hover{
     background-color: #B03535;
+}
+
+.switch-label {    
+    background-color: var(--switch-bg-color);
+    color: var(--text-color);
+    margin: 0.5vh 0 0 0;
+    /* padding: 5px 10px 0 10px; */
+    /* width: 100px; */
+    /* height: 21px; */
+    padding: 0.5vh 1vw 0 1vw;
+    width: 5vw;
+    height: 4vh;
+    transition: 0.5s;
+    /* border: 2px solid brown; */
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.switch-label::before {
+    content: var(--switch-text);
+}
+/* ! Updating variables in CSS can only apply to sibling elements */
+#theme-switch:checked ~ * {    
+    --page-color: var(--dark-page-color);    
+    --nav-bar-color: var(--dark-nav-color);
+    --switch-text: "Dark Mode";
+    --text-color: var(--dark-text-color);
+    --switch-bg-color: var(--dark-label-color);
+    
 }
 
 h2, h3 {
