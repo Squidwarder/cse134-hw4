@@ -25,10 +25,12 @@
         <link rel="stylesheet" href="css/general.css">
     </head>
     <body>
+        <input type="checkbox" id="theme-switch" style="display: none;">
         <header>
             
             <nav>
                 <a href="index.html">Back to homepage</a>
+                <label for="theme-switch" class="switch-label"></label>
             </nav>
             
             <h1 style="border-style: dashed;">This is the <i>experiment</i> page for CSE 134B HWs</h1>
@@ -100,7 +102,7 @@
             </form>
 
             <h3>Iframes seem fancy</h3>
-            <iframe src="index.html" title="Iframe of homepage"></iframe>
+            <iframe src="index.html" title="Iframe of homepage" style="max-width: 50vw;"></iframe>
 
             <hr>
             <div>
@@ -117,7 +119,7 @@
                 Splash! Silence again
             </pre>
             Here is a splashing sound.
-            <audio controls>
+            <audio controls style="max-width: 20vw;">
                 <source src="splash_sound.mp3" type="audio/mpeg">
                 If you're reading this, then your browser didn't load the audio correctly.
             </audio>
