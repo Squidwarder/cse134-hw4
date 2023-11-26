@@ -19,7 +19,7 @@ var errorCnt = 0;
 
 function flashWarning(warnedElement) {
     warnedElement.classList.add("flash-warning");
-    console.log("flashWarning invoked");
+    // console.log("flashWarning invoked");
     setTimeout(() => {
         warnedElement.classList.remove("flash-warning");
     }, 2000);
@@ -108,7 +108,7 @@ function trackFormError() {
         let tmp_name = "Error#" + errorCnt;
         formErrors[tmp_name] = commentErrMsg.value;
     }
-    console.log(formErrors);
+    // console.log(formErrors);
     document.getElementById('jsonFormError').value = JSON.stringify(formErrors);
 }
 
