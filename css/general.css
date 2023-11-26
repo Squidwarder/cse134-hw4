@@ -28,16 +28,20 @@ body {
     background-color: var(--page-color, beige);
     font-family: var(--body-text-font, 'Times New Roman', Times, serif);
     margin: 0;
+    height: 100vh;
     
     & main {
         color: var(--text-color);    
         background-color: var(--page-color, beige);
-        font-family: var(--body-text-font, 'Times New Roman', Times, serif);
+        font-family: var(--body-text-font, 'Times New Roman', Times, serif);        
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
     }
 
     & section {
-        margin: 0 1vw 0.5vh 1vw;
-        padding: 0 0.5vw 0 0.5vw;
+        margin: 0 1vw 0 1vw;
+        padding: 0 0.5vw 0.5vh 0.5vw;
         display: flex;
         flex-direction: column;
     }
