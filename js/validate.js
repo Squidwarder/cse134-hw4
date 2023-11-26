@@ -14,6 +14,9 @@ const nameRegex = /^[A-Za-z0-9]+$/
 const commentRegex = /^[ -~\n]+$/;
 const emailRegex = /^[ -~]+@[ -~]+$/;
 
+var formErrors = {};
+var errorCnt = 0;
+
 function flashWarning(warnedElement) {
     warnedElement.classList.add("flash-warning");
     console.log("flashWarning invoked");
@@ -25,7 +28,7 @@ function flashWarning(warnedElement) {
 document.addEventListener("DOMContentLoaded", function() {
 
     if (nameValidate.validity.valueMissing) {
-        nameErrMsg.textContent = "No input detected";
+        nameErrMsg.textContent = "No name detected";
         nameInfoMsg.textContent = "Please input a name it's required";
         nameValidate.setCustomValidity("Please input a name");
     } else if (!nameRegex.test(nameValidate.value)) {
@@ -34,20 +37,20 @@ document.addEventListener("DOMContentLoaded", function() {
         flashWarning(nameErrMsg);
         nameValidate.setCustomValidity("Please fix name characters");
     } else {        
-        nameErrMsg.textContent = "No errors detected";
+        nameErrMsg.textContent = "No name errors";
         nameInfoMsg.textContent = "Nice, this looks good";
         // console.log("Valid name");
     }
 
-    if (emailValidate.validity.typeMismatch) {
+    if (emailValidate.validity.valueMissing) {
+
+        emailErrMsg.textContent = "No email detected";
+        emailInfoMsg.textContent = "please input an email, it's required";
+        emailValidate.setCustomValidity("Please input a valid email address");
+    } else if (emailValidate.validity.typeMismatch) {
         emailErrMsg.textContent = "Invalid email address";
         emailInfoMsg.textContent = "Did you forget to put @?";
         emailValidate.setCustomValidity("Please input an email");
-    } else if (emailValidate.validity.valueMissing) {
-
-        emailErrMsg.textContent = "No input detected";
-        emailInfoMsg.textContent = "please input an email, it's required";
-        emailValidate.setCustomValidity("Please input a valid email address");
     } else if (!emailRegex.test(emailValidate.value)) {
 
         emailErrMsg.textContent = "Invalid email characters";
@@ -55,14 +58,14 @@ document.addEventListener("DOMContentLoaded", function() {
         emailValidate.setCustomValidity("Please fix email characters");
         flashWarning(emailErrMsg);
     } else {        
-        emailErrMsg.textContent = "No errors detected";
+        emailErrMsg.textContent = "No email errors";
         emailInfoMsg.textContent = "Nice, this looks good";
         emailValidate.setCustomValidity("");
         // console.log("Valid email");
     }
 
     if (commentValidate.validity.valueMissing) {
-        commentErrMsg.textContent = "No input detected";
+        commentErrMsg.textContent = "No comment detected";
         commentInfoMsg.textContent = "Please input some comments, it's required";
         commentValidate.setCustomValidity("Please input some comments");
     } else if (!commentRegex.test(commentValidate.value)) {
@@ -75,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
         commentInfoMsg.textContent = "Please make it shorter, less than 200 characters";
         commentValidate.setCustomValidity("Please make the message shorter");
     } else {        
-        commentErrMsg.textContent = "No errors detected";
+        commentErrMsg.textContent = "No comment errors";
         commentInfoMsg.textContent = (300 - commentValidate.value.length) + " Characters left";
         if (300 - commentValidate.value.length < 50) {
             flashWarning(commentInfoMsg);
@@ -85,6 +88,30 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+function trackFormError() {
+    // console.log("Tried to submit");
+
+    if (!nameValidate.checkValidity()) {
+        errorCnt += 1;
+        let tmp_name = "Error#" + errorCnt;
+        formErrors[tmp_name] = nameErrMsg.value;
+    }
+
+    if (!emailValidate.checkValidity()) {
+        errorCnt += 1;
+        let tmp_name = "Error#" + errorCnt;
+        formErrors[tmp_name] = emailErrMsg.value;
+    }
+
+    if (!commentValidate.checkValidity()) {
+        errorCnt += 1;
+        let tmp_name = "Error#" + errorCnt;
+        formErrors[tmp_name] = commentErrMsg.value;
+    }
+    console.log(formErrors);
+    document.getElementById('jsonFormError').value = JSON.stringify(formErrors);
+}
+
 // ! Need to set CustomValidity to default in the case of no errors.
 // ! Otherwise the form display won't be updated on the fly
 nameValidate.addEventListener("input", (event) => {
@@ -92,7 +119,7 @@ nameValidate.addEventListener("input", (event) => {
     
     // console.log("Invalid name");        
     if (nameValidate.validity.valueMissing) {
-        nameErrMsg.textContent = "No input detected";
+        nameErrMsg.textContent = "No name detected";
         nameInfoMsg.textContent = "Please input a name it's required";
         nameValidate.setCustomValidity("Please input a name");
         
@@ -102,7 +129,7 @@ nameValidate.addEventListener("input", (event) => {
         nameValidate.setCustomValidity("Please use valid characters");
         flashWarning(nameErrMsg);
     } else {
-        nameErrMsg.textContent = "No errors detected";
+        nameErrMsg.textContent = "No name errors";
         nameInfoMsg.textContent = "Nice, this looks good";
         nameValidate.setCustomValidity("");
         // console.log("Valid name");
@@ -113,22 +140,22 @@ emailValidate.addEventListener("input", (event) => {
     // console.log("Email validate() invoked");
     
     // console.log("Invalid email");
-    if (emailValidate.validity.typeMismatch) {
+    if (emailValidate.validity.valueMissing) {
+
+        emailErrMsg.textContent = "No email detected";
+        emailInfoMsg.textContent = "please input an email, it's required";
+        emailValidate.setCustomValidity("Please input an email");
+    } else if (emailValidate.validity.typeMismatch) {
         emailErrMsg.textContent = "Invalid email address";
         emailInfoMsg.textContent = "Did you forget to put @?";
         emailValidate.setCustomValidity("Please input a valid email address");
-    } else if (emailValidate.validity.valueMissing) {
-
-        emailErrMsg.textContent = "No input detected";
-        emailInfoMsg.textContent = "please input an email, it's required";
-        emailValidate.setCustomValidity("Please input an email");
     } else if (!emailRegex.test(emailValidate.value)) {
 
         emailErrMsg.textContent = "Invalid email characters";
         emailInfoMsg.textContent = "Only ASCII characters are accepted";
         emailValidate.setCustomValidity("Please input a valid email address");
     } else {        
-        emailErrMsg.textContent = "No errors detected";
+        emailErrMsg.textContent = "No email errors";
         emailInfoMsg.textContent = "Nice, this looks good";
         emailValidate.setCustomValidity("");
         // console.log("Valid email");
@@ -139,7 +166,7 @@ commentValidate.addEventListener("input", (event) => {
     // console.log("Comment validate() invoked");
    
     if (commentValidate.validity.valueMissing) {
-        commentErrMsg.textContent = "No input detected";
+        commentErrMsg.textContent = "No comment detected";
         commentInfoMsg.textContent = "Please input some comments, it's required";
         commentValidate.setCustomValidity("Please input some comments");
     } else if (!commentRegex.test(commentValidate.value)) {
@@ -152,7 +179,7 @@ commentValidate.addEventListener("input", (event) => {
         commentInfoMsg.textContent = "Please make it shorter, less than 200 characters";
         commentValidate.setCustomValidity("Please make the message shorter");
     } else {
-        commentErrMsg.textContent = "No errors detected";
+        commentErrMsg.textContent = "No comment errors";
         commentInfoMsg.textContent = (300 - commentValidate.value.length) + " Characters left";
         if (300 - commentValidate.value.length < 50) {
             flashWarning(commentInfoMsg);
